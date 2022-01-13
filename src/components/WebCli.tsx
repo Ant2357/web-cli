@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useCli } from "cli/useCli"
+
 import "css/cli.css";
 
 type CliComponentState = {
@@ -6,6 +8,9 @@ type CliComponentState = {
 }
 
 const WebCli: React.FC = () => {
+  const [cliState, cliFuncs] = useCli();
+
+
   const [cliComponentState] = useState<CliComponentState>({
     cliInput: React.createRef()
   })
@@ -19,6 +24,11 @@ const WebCli: React.FC = () => {
     cliComponentState.cliInput.current?.focus();
   }
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    cliFuncs.exec();
+    event.preventDefault();
+  }
+
   return (
     <div className="cli" onClick={focus}>
       <pre>
@@ -27,17 +37,22 @@ AntCLI風 1.1.2
 
   Usage: ant2357 <command>
 
-  Examples: ant2357 --help
+  Example: ant2357 --help
 `}
       </pre>
+      <div>
+        { cliState.logs.map((log, index) => <p key={index}>{log}</p>) }
+      </div>
 
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <span>$ </span>
         <input
           type="text"
           className="cli-input"
           spellCheck="false"
           ref={cliComponentState.cliInput}
+          value={cliState.cmd}
+          onChange={event => cliFuncs.setCliState(state => ({...state, cmd: event.target.value}))}
         />
       </form>
     </div>
