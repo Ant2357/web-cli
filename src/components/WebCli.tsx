@@ -23,11 +23,11 @@ const WebCli: React.FC = () => {
     <div className="cli" onClick={focus}>
       <pre>
 {`
-YaitoCLI風 1.1.2
+AntCLI風 1.1.2
 
-  Usage: yaito <command>
+  Usage: ant2357 <command>
 
-  Examples: yaito --help
+  Examples: ant2357 --help
 `}
       </pre>
 
