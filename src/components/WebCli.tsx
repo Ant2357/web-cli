@@ -11,6 +11,11 @@ const WebCli: React.FC = () => {
   })
 
   const focus = () => {
+    // ドラッグ処理対策
+    if (window.getSelection()) {
+      return;
+    }
+
     cliComponentState.cliInput.current?.focus();
   }
 
@@ -31,6 +36,7 @@ YaitoCLI風 1.1.2
         <input
           type="text"
           className="cli-input"
+          spellCheck="false"
           ref={cliComponentState.cliInput}
         />
       </form>
