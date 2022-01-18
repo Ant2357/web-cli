@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as cmdAnt2357 from "cli/cmds/ant2357";
 
 export type CliState = {
   cmd: string;
@@ -7,7 +8,7 @@ export type CliState = {
 
 export interface CliFuncs {
   setCliState: React.Dispatch<React.SetStateAction<CliState>>;
-  exec: () => void;
+  exec: (cmd: string) => void;
 }
 
 export const useCli = (): [CliState, CliFuncs] => {
@@ -16,10 +17,20 @@ export const useCli = (): [CliState, CliFuncs] => {
     logs: [""]
   });
 
-  const exec = () => {
+  const exec = (text: string) => {
+    const cmds: string[] = cmdAnt2357.analyze(text);
+    console.log(cmds);
+    const newLog: string = (() => {
+      if (cmds.length === 0) {
+        return "errorMsg";
+      }
+
+      return cmds.reduce((acc, v) => `${acc}\n${cmdAnt2357.exec(v)}`, "")
+    })();
+
     setCliState({
       cmd: "",
-      logs: [...cliState.logs, `$ ${cliState.cmd}`]
+      logs: [...cliState.logs, `$ ${newLog}`]
     });
   };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useCli } from "cli/useCli"
+import { useCli } from "cli/useCli";
 
 import "css/cli.css";
 
@@ -25,7 +25,7 @@ const WebCli: React.FC = () => {
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    cliFuncs.exec();
+    cliFuncs.exec(cliState.cmd);
     event.preventDefault();
   }
 
