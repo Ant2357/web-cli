@@ -14,10 +14,27 @@ export const analyze = (cmd: string): string[] => {
 export const exec = (command: string): string => {
   switch (command) {
     case "help":
-      return "helpMsg";
+      return `
+  Usage: ant2357 <command>
+
+  Where <command> is one of:
+    --help, --version
+
+  Example:
+    ant2357 --help
+
+  web-cli@バージョン番号 https://github.com/Ant2357/リポジトリ
+
+  --help
+    Options:
+    Quick help on all <command>
+  --version
+    Options:
+    See version of this service
+`;
       break;
     default:
-      return "errorMsg";
+      return `\nerror: unknown flag.\n`;
       break;
   }
 };

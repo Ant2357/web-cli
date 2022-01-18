@@ -37,12 +37,12 @@ AntCLI風 1.1.2
 
   Usage: ant2357 <command>
 
-  Example: ant2357 --help
-`}
+  Example: ant2357 --help`}
       </pre>
-      <div>
-        { cliState.logs.map((log, index) => <p key={index}>{log}</p>) }
-      </div>
+
+      <pre>
+        {cliState.logs.map((log) => `${log}`)}
+      </pre>
 
       <form onSubmit={handleSubmit}>
         <span>$ </span>
