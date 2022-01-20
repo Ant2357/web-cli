@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useCli } from "cli/useCli";
 
 import "css/cli.css";
@@ -10,10 +10,15 @@ type CliComponentState = {
 const WebCli: React.FC = () => {
   const [cliState, cliFuncs] = useCli();
 
-
   const [cliComponentState] = useState<CliComponentState>({
     cliInput: React.createRef()
   })
+
+
+  useLayoutEffect(() => {
+    cliComponentState.cliInput.current?.scrollIntoView();
+  });
+
 
   const focus = () => {
     // ドラッグ処理対策
@@ -28,6 +33,7 @@ const WebCli: React.FC = () => {
     cliFuncs.exec(cliState.cmd);
     event.preventDefault();
   }
+
 
   return (
     <div className="cli" onClick={focus}>
