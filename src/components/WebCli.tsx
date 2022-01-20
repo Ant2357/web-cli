@@ -17,7 +17,7 @@ const WebCli: React.FC = () => {
 
   const focus = () => {
     // ドラッグ処理対策
-    if (window.getSelection()) {
+    if (window.getSelection()?.toString()) {
       return;
     }
 
