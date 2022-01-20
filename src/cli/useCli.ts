@@ -14,18 +14,21 @@ export interface CliFuncs {
 export const useCli = (): [CliState, CliFuncs] => {
   const [cliState, setCliState] = useState<CliState>({
     cmd: "ant2357 --help",
-    logs: [""]
+    logs: []
   });
 
   const exec = (text: string) => {
     const cmds: string[] = cmdAnt2357.analyze(text);
     const newLog: string = (() => {
       if (cmds.length === 0) {
-        return `\ncommand ${text} is not found.\n`;
+        return `  command ${text} is not found.`;
       }
 
       // コマンド結果を返す
-      return cmds.reduce((acc, v) => `${acc}\n${cmdAnt2357.exec(v)}`, "")
+      return cmds.reduce((acc, v, index) => {
+        const lineSpacing: string = index ? "\n\n" : "";
+        return `${acc}${lineSpacing}${cmdAnt2357.exec(v)}`
+      }, "");
     })();
 
 

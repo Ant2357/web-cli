@@ -47,7 +47,7 @@ AntCLI風 1.1.2
       </pre>
 
       <pre>
-        {cliState.logs.map((log) => `${log}`)}
+        {cliState.logs.map((log, index) => index ? `\n${log}\n` : `${log}\n`)}
       </pre>
 
       <form onSubmit={handleSubmit}>

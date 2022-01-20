@@ -4,6 +4,10 @@ export const analyze = (cmd: string): string[] => {
 
   const isAnt2357 = cmd.indexOf("ant2357") !== -1;
 
+  if (isAnt2357 && cmd.indexOf("--version") !== -1) {
+    cmdStack.push("version");
+  }
+
   if (isAnt2357 && cmd.indexOf("--help") !== -1) {
     cmdStack.push("help");
   }
@@ -14,8 +18,7 @@ export const analyze = (cmd: string): string[] => {
 export const exec = (command: string): string => {
   switch (command) {
     case "help":
-      return `
-  Usage: ant2357 <command>
+      return `  Usage: ant2357 <command>
 
   Where <command> is one of:
     --help, --version
@@ -30,11 +33,13 @@ export const exec = (command: string): string => {
     Quick help on all <command>
   --version
     Options:
-    See version of this service
-`;
+    See version of this service`;
+      break;
+    case "version":
+      return `  Version: 1.1.2`;
       break;
     default:
-      return `\nerror: unknown flag.\n`;
+      return `  Error: Unknown flag.`;
       break;
   }
 };
