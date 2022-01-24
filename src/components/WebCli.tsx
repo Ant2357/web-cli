@@ -39,7 +39,7 @@ const WebCli: React.FC = () => {
     <div className="cli" onClick={focus}>
       <pre>
 {`
-AntCLI風 1.1.2
+AntCLI風 1.0.0
 
   Usage: ant2357 <command>
 

@@ -39,7 +39,7 @@ export const exec = (command: string): string => {
     Options:
     See version of this service`;
     case "version":
-      return `  Version: 1.1.2`;
+      return `  Version: 1.0.0`;
     case "bio":
       return `  name: ???,
   Age: null,
