@@ -37,7 +37,10 @@ export const exec = (command: string): string => {
     Quick help on all <command>
   --version
     Options:
-    See version of this service`;
+    See version of this service
+  --bio
+    Options:
+    Profile of ant2357`;
     case "version":
       return `  Version: 1.0.0`;
     case "bio":
