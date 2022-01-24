@@ -36,13 +36,13 @@ export const exec = (command: string): string => {
   --version
     Options:
     See version of this service
-  --bio
+  --profile
     Options:
     Profile of ant2357`;
     case "version":
       return `  Version: 1.0.0`;
     case "profile":
-      return `  name: ???
+      return `  Name: ???
   Age: null
   Location: Tokyo
   Email: ryu4979@gmail.com
