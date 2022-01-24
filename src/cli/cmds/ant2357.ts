@@ -12,6 +12,10 @@ export const analyze = (cmd: string): string[] => {
     cmdStack.push("help");
   }
 
+  if (isAnt2357 && cmd.indexOf("--bio") !== -1) {
+    cmdStack.push("bio");
+  }
+
   return cmdStack;
 };
 
@@ -34,12 +38,15 @@ export const exec = (command: string): string => {
   --version
     Options:
     See version of this service`;
-      break;
     case "version":
       return `  Version: 1.1.2`;
-      break;
+    case "bio":
+      return `  name: ???,
+  Age: null,
+  Location: Tokyo,
+  Email: ryu4979@gmail.com
+  Github: https://github.com/Ant2357`
     default:
       return `  Error: Unknown flag.`;
-      break;
   }
 };
