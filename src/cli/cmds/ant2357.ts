@@ -12,8 +12,8 @@ export const analyze = (cmd: string): string[] => {
     cmdStack.push("help");
   }
 
-  if (isAnt2357 && cmd.indexOf("--bio") !== -1) {
-    cmdStack.push("bio");
+  if (isAnt2357 && cmd.indexOf("--profile") !== -1) {
+    cmdStack.push("profile");
   }
 
   return cmdStack;
@@ -25,12 +25,10 @@ export const exec = (command: string): string => {
       return `  Usage: ant2357 <command>
 
   Where <command> is one of:
-    --help, --version
+    --help, --version, --profile
 
   Example:
     ant2357 --help
-
-  web-cli@バージョン番号 https://github.com/Ant2357/リポジトリ
 
   --help
     Options:
@@ -43,10 +41,10 @@ export const exec = (command: string): string => {
     Profile of ant2357`;
     case "version":
       return `  Version: 1.0.0`;
-    case "bio":
-      return `  name: ???,
-  Age: null,
-  Location: Tokyo,
+    case "profile":
+      return `  name: ???
+  Age: null
+  Location: Tokyo
   Email: ryu4979@gmail.com
   Github: https://github.com/Ant2357`
     default:
