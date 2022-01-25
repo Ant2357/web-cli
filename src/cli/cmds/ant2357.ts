@@ -24,9 +24,6 @@ export const exec = (command: string): string => {
     case "help":
       return `  Usage: ant2357 <command>
 
-  Where <command> is one of:
-    --help, --version, --profile
-
   Example:
     ant2357 --help
 
