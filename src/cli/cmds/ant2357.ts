@@ -43,7 +43,7 @@ export const exec = (command: string): string => {
   Age: null
   Location: Tokyo
   Email: ryu4979@gmail.com
-  Github: https://github.com/Ant2357`
+  GitHub: https://github.com/Ant2357`
     default:
       return `  Error: Unknown flag.`;
   }
