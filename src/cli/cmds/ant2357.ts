@@ -1,8 +1,7 @@
 
-export const analyze = (text: string): string[] => {
+export const analyze = (cmds: string): string[] => {
   let cmdStack: string[] = [];
 
-  const cmds = text.split("--").map(v => v.trim());
   const isAnt2357 = cmds.includes("ant2357");
   if (isAnt2357 && cmds.includes("version")) {
     cmdStack.push("version");
@@ -22,7 +21,7 @@ export const analyze = (text: string): string[] => {
 export const exec = (command: string): string => {
   switch (command) {
     case "help":
-      return `  Usage: ant2357 <command>
+      return `Usage: ant2357 <command>
 
   Example:
     ant2357 --help
@@ -37,9 +36,9 @@ export const exec = (command: string): string => {
     Options:
     Profile of ant2357`;
     case "version":
-      return `  Version: 1.0.0`;
+      return `Version: 1.0.0`;
     case "profile":
-      return `  Name: ???
+      return `Name: ???
   Age: null
   Location: Tokyo
   Email: ryu4979@gmail.com

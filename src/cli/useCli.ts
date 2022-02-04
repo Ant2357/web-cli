@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as cmdAnt2357 from "cli/cmds/ant2357";
+import * as cmdCowsay from "cli/cmds/cowsay";
 
 export type CliState = {
   cmd: string;
@@ -18,17 +19,33 @@ export const useCli = (): [CliState, CliFuncs] => {
   });
 
   const exec = (text: string) => {
-    const cmds: string[] = cmdAnt2357.analyze(text);
     const newLog: string = (() => {
-      if (cmds.length === 0) {
+      const ant2357Cmds: string[] = [...cmdAnt2357.analyze(text)];
+      const isCowsay = cmdCowsay.isCowsay(text);
+
+      // 実行するコマンドが無い
+      if (ant2357Cmds.length === 0 && !isCowsay) {
         return `  command ${text} is not found.`;
       }
 
-      // コマンド結果を返す
-      return cmds.reduce((acc, v, index) => {
+
+      // ant2357コマンドの結果
+      const resAnt2357 = ant2357Cmds.reduce((acc, v, index) => {
         const lineSpacing: string = index ? "\n\n" : "";
-        return `${acc}${lineSpacing}${cmdAnt2357.exec(v)}`
+        return `${acc}${lineSpacing}  ${cmdAnt2357.exec(v)}`
       }, "");
+
+
+      // cowsayコマンド
+      if (ant2357Cmds.length === 0) {
+        return cmdCowsay.exec(text.replaceAll("cowsay", "").trim());
+      }
+      if (isCowsay) {
+        return cmdCowsay.exec(resAnt2357);
+      }
+
+
+      return resAnt2357;
     })();
 
 
