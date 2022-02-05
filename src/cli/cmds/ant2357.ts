@@ -1,17 +1,18 @@
 
-export const analyze = (cmds: string): string[] => {
+export const analyze = (text: string): string[] => {
   let cmdStack: string[] = [];
 
+  const cmds = text.split(" ").map(v => v.trim());
   const isAnt2357 = cmds.includes("ant2357");
-  if (isAnt2357 && cmds.includes("version")) {
+  if (isAnt2357 && cmds.includes("--version")) {
     cmdStack.push("version");
   }
 
-  if (isAnt2357 && cmds.includes("help")) {
+  if (isAnt2357 && cmds.includes("--help")) {
     cmdStack.push("help");
   }
 
-  if (isAnt2357 && cmds.includes("profile")) {
+  if (isAnt2357 && cmds.includes("--profile")) {
     cmdStack.push("profile");
   }
 
