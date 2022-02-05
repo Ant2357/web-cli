@@ -5,5 +5,5 @@ export const isCowsay = (text: string): boolean => {
 }
 
 export const exec = (text: string): string => {
-  return cowsay(text);
+  return cowsay(text, { wrap: null });
 };
