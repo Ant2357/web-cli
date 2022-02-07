@@ -32,7 +32,7 @@ export const useCli = (): [CliState, CliFuncs] => {
       // ant2357コマンドの結果
       const resAnt2357 = ant2357Cmds.reduce((acc, v, index) => {
         const lineSpacing: string = index ? "\n\n" : "";
-        return `${acc}${lineSpacing}  ${cmdAnt2357.exec(v)}`
+        return `${acc}${lineSpacing}${cmdAnt2357.exec(v)}`
       }, "");
 
 
