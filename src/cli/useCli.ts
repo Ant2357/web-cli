@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as cmdAnt2357 from "cli/cmds/ant2357";
 import * as cmdCowsay from "cli/cmds/cowsay";
+import * as cmdTweet from "cli/cmds/tweet";
 
 export type CliState = {
   cmd: string;
@@ -20,32 +21,26 @@ export const useCli = (): [CliState, CliFuncs] => {
 
   const exec = (text: string) => {
     const newLog: string = (() => {
+
+      if (cmdTweet.isTweet(text)) {
+        cmdTweet.open(text);
+        return "Tweet!!";
+      }
+
+      if (cmdCowsay.isCowsay(text)) {
+        return cmdCowsay.exec(text);
+      }
+
       const ant2357Cmds: string[] = [...cmdAnt2357.analyze(text)];
-      const isCowsay = cmdCowsay.isCowsay(text);
-
-      // 実行するコマンドが無い
-      if (ant2357Cmds.length === 0 && !isCowsay) {
-        return `  command ${text} is not found.`;
+      if (ant2357Cmds.length !== 0) {
+        // ant2357コマンドの結果
+        return ant2357Cmds.reduce((acc, v, index) => {
+          const lineSpacing: string = index ? "\n\n" : "";
+          return `${acc}${lineSpacing}${cmdAnt2357.exec(v)}`
+        }, "");
       }
 
-
-      // ant2357コマンドの結果
-      const resAnt2357 = ant2357Cmds.reduce((acc, v, index) => {
-        const lineSpacing: string = index ? "\n\n" : "";
-        return `${acc}${lineSpacing}${cmdAnt2357.exec(v)}`
-      }, "");
-
-
-      // cowsayコマンド
-      if (ant2357Cmds.length === 0) {
-        return cmdCowsay.exec(text.replaceAll("cowsay", "").trim());
-      }
-      if (isCowsay) {
-        return cmdCowsay.exec(resAnt2357);
-      }
-
-
-      return resAnt2357;
+      return `  command ${text} is not found.`;
     })();
 
 

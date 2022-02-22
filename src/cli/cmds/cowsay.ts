@@ -7,5 +7,6 @@ export const isCowsay = (text: string): boolean => {
 }
 
 export const exec = (text: string): string => {
-  return cowsay(text, { wrap: null });
+  const cowsayText = text.replaceAll("cowsay", "").trim();
+  return cowsay(cowsayText, { wrap: null });
 };
