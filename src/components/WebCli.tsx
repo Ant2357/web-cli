@@ -39,7 +39,14 @@ const WebCli: React.FC = () => {
     <div className="cli" onClick={focus}>
       <pre>
 {`
-AntCLI風 1.0.0
+＿人人人人人人人人人人人人人人人人人人人＿
+＞　　 db　　　　　 w　 .d88b 8　　888　＜
+＞　　dPYb　 8d8b. w8ww 8P　　8　　 8 　＜
+＞　 dPwwYb　8P Y8　8　 8b　　8　　 8 　＜
+＞　dP　　Yb 8　 8　Y8P \`Y88P 8888 888　＜
+￣Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^￣
+
+  AntCLI風 1.0.0
 
   Usage: ant2357 <command>
 
