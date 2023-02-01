@@ -3,8 +3,6 @@ import * as cmdAnt2357 from "cli/cmds/ant2357";
 import * as cmdCowsay from "cli/cmds/cowsay";
 import * as cmdFiglet from "cli/cmds/figlet";
 import * as cmdNyanko from "cli/cmds/nyanko";
-import * as cmdTweet from "cli/cmds/tweet";
-import * as cmdDm from "cli/cmds/dm";
 
 export type CliState = {
   cmd: string;
@@ -24,16 +22,6 @@ export const useCli = (): [CliState, CliFuncs] => {
 
   const exec = (text: string) => {
     const newLog: string = (() => {
-
-      if (cmdDm.isDm(text)) {
-        cmdDm.open(text);
-        return "Direct message has been sent!!";
-      }
-
-      if (cmdTweet.isTweet(text)) {
-        cmdTweet.open(text);
-        return "Tweet!!";
-      }
 
       if (cmdCowsay.isCowsay(text)) {
         return cmdCowsay.exec(text);
