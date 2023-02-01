@@ -39,7 +39,7 @@ export const exec = (command: string): string => {
     case "version":
       return `  Version: 1.0.0`;
     case "profile":
-      return `  Name: ???
+      return `  Name: ????
   Age: null
   Location: Tokyo
   Email: ryu4979@gmail.com
@@ -48,3 +48,10 @@ export const exec = (command: string): string => {
       return `  Error: Unknown flag.`;
   }
 };
+
+export const run = (cmdStack: string[]): string => {
+  return cmdStack.reduce((acc, v, index) => {
+    const lineSpacing: string = index ? "\n\n" : "";
+    return `${acc}${lineSpacing}${exec(v)}`
+  }, "")
+}

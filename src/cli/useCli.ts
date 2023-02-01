@@ -40,13 +40,9 @@ export const useCli = (): [CliState, CliFuncs] => {
         }, "");
       }
 
-      const ant2357Cmds: string[] = [...cmdAnt2357.analyze(text)];
-      if (ant2357Cmds.length !== 0) {
-        // ant2357コマンドの結果
-        return ant2357Cmds.reduce((acc, v, index) => {
-          const lineSpacing: string = index ? "\n\n" : "";
-          return `${acc}${lineSpacing}${cmdAnt2357.exec(v)}`
-        }, "");
+      const ant2357CmdStack: string[] = [...cmdAnt2357.analyze(text)];
+      if (ant2357CmdStack.length !== 0) {
+        return cmdAnt2357.run(ant2357CmdStack);
       }
 
       return `  command ${text} is not found.`;
