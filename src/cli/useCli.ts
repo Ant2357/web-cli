@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as cmdAnt2357 from "cli/cmds/ant2357";
 import * as cmdCowsay from "cli/cmds/cowsay";
+import * as cmdFiglet from "cli/cmds/figlet";
 import * as cmdTweet from "cli/cmds/tweet";
 import * as cmdDm from "cli/cmds/dm";
 
@@ -35,6 +36,10 @@ export const useCli = (): [CliState, CliFuncs] => {
 
       if (cmdCowsay.isCowsay(text)) {
         return cmdCowsay.exec(text);
+      }
+
+      if (cmdFiglet.isFiglet(text)) {
+        return cmdFiglet.exec(text);
       }
 
       const ant2357Cmds: string[] = [...cmdAnt2357.analyze(text)];
