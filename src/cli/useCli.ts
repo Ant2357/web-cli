@@ -2,6 +2,7 @@ import { useState } from "react";
 import * as cmdAnt2357 from "cli/cmds/ant2357";
 import * as cmdCowsay from "cli/cmds/cowsay";
 import * as cmdFiglet from "cli/cmds/figlet";
+import * as cmdNyanko from "cli/cmds/nyanko";
 import * as cmdTweet from "cli/cmds/tweet";
 import * as cmdDm from "cli/cmds/dm";
 
@@ -40,6 +41,15 @@ export const useCli = (): [CliState, CliFuncs] => {
 
       if (cmdFiglet.isFiglet(text)) {
         return cmdFiglet.exec(text);
+      }
+
+
+      const nyankoCmds: string[] = [...cmdNyanko.analyze(text)];
+      if (nyankoCmds.length !== 0) {
+        return nyankoCmds.reduce((acc, v, index) => {
+          const lineSpacing: string = index ? "\n\n" : "";
+          return `${acc}${lineSpacing}${cmdNyanko.exec(v)}`
+        }, "");
       }
 
       const ant2357Cmds: string[] = [...cmdAnt2357.analyze(text)];

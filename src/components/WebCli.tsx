@@ -48,7 +48,7 @@ const WebCli: React.FC = () => {
 
   AntCLI Version: 1.0.0
 
-  Commands: ant2357, cowsay, figlet, ?????, ??
+  Commands: ant2357, cowsay, figlet, nyanko, ?????, ??
 
   Usage: ant2357 <command>
 
