@@ -32,12 +32,9 @@ export const useCli = (): [CliState, CliFuncs] => {
       }
 
 
-      const nyankoCmds: string[] = [...cmdNyanko.analyze(text)];
-      if (nyankoCmds.length !== 0) {
-        return nyankoCmds.reduce((acc, v, index) => {
-          const lineSpacing: string = index ? "\n\n" : "";
-          return `${acc}${lineSpacing}${cmdNyanko.exec(v)}`
-        }, "");
+      const nyankoCmdStack: string[] = [...cmdNyanko.analyze(text)];
+      if (nyankoCmdStack.length !== 0) {
+        return cmdNyanko.run(nyankoCmdStack);
       }
 
       const ant2357CmdStack: string[] = [...cmdAnt2357.analyze(text)];

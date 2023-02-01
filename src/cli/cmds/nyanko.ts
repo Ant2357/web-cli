@@ -35,3 +35,10 @@ export const exec = (command: string): string => {
     return `  Error: Unknown flag.`;
   }
 }
+
+export const run = (cmdStack: string[]): string => {
+  return cmdStack.reduce((acc, v, index) => {
+    const lineSpacing: string = index ? "\n\n" : "";
+    return `${acc}${lineSpacing}${exec(v)}`
+  }, "")
+}
