@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useCli } from "features/webCli/cli/useCli";
 
-import "features/webCli/css/cli.css";
+import "features/webCli/styles/cli.css";
 
 type CliComponentState = {
   cliInput: React.RefObject<HTMLInputElement>
