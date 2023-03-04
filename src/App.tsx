@@ -1,8 +1,18 @@
 import WebCli from 'components/WebCli';
+import { SaveUkraine } from 'components/SaveUkraine';
+
+import "css/app.css";
 
 function App() {
   return (
-    <WebCli />
+    <div>
+      <SaveUkraine
+        ribbon={"TOP_RIGHT"}
+        hasShadow={false}
+        countries={[]}
+      />
+      <WebCli />
+    </div>
   );
 }
 
