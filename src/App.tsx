@@ -1,7 +1,5 @@
-import WebCli from 'components/WebCli';
-import { SaveUkraine } from 'components/SaveUkraine';
-
-import "css/app.css";
+import WebCli from 'features/webCli/components/WebCli';
+import { SaveUkraine } from 'features/saveUkraine/components/SaveUkraine';
 
 function App() {
   return (
