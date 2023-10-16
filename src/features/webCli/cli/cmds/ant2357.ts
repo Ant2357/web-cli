@@ -37,7 +37,7 @@ export const exec = (command: string): string => {
     Options:
     Profile of ant2357`;
     case "version":
-      return `  Version: 1.0.0`;
+      return `  Version: 2.0.0`;
     case "profile":
       return `  Name: ????
   Age: null
