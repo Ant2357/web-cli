@@ -46,7 +46,7 @@ const WebCli: React.FC = () => {
 ＞　dP　　Yb 8　 8　Y8P \`Y88P 8888 888　＜
 ￣Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^￣
 
-  AntCLI Version: 2.0.0
+  AntCLI Version: 2.1.0
 
   Commands: ant2357, cowsay, figlet, nyanko
 

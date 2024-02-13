@@ -16,6 +16,10 @@ export const analyze = (text: string): string[] => {
     cmdStack.push("profile");
   }
 
+  if (isAnt2357 && (cmds.includes("--birthday") || cmds.includes("-b"))) {
+    cmdStack.push("birthday");
+  }
+
   return cmdStack;
 };
 
@@ -35,15 +39,37 @@ export const exec = (command: string): string => {
     See version of this service
   --profile or -p
     Options:
-    Profile of ant2357`;
+    Profile of ant2357
+  --birthday or -b
+    Options:
+    Birthday of ant2357`;
     case "version":
-      return `  Version: 2.0.0`;
+      return `  Version: 2.1.0`;
     case "profile":
       return `  Name: ????
   Age: null
   Location: Tokyo
   Email: ryu4979@gmail.com
   GitHub: https://github.com/Ant2357`
+    case "birthday":
+      return `
+┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+┈   ____       __  _   _____  ┈
+┈  |___ )     / / / | |___ /  ┈
+┈    __) |   / /  | |   |_    ┈
+┈   / __/   / /   | |  ___) | ┈
+┈  |_____| /_/    |_| |____/  ┈
+┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+
+┈┈┈┈┈┈┈☆☆☆☆☆☆☆☆☆┈┈┈┈┈┈
+┈┈┈┈┈┈╭┻┻┻┻┻┻┻┻┻╮┈┈┈┈┈
+┈┈┈┈┈┈┃╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲┃┈┈┈┈┈
+┈┈┈┈┈╭┻━━━━━━━━┻╮┈┈┈┈
+┈┈┈┈┈┃╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲┃┈┈┈┈
+┈┈┈┈┈┗━━━━━━━━━┛┈┈┈┈
+
+
+(´・ω・｀)`
     default:
       return `  Error: Unknown flag.`;
   }
